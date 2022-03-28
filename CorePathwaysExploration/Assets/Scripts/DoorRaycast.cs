@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class DoorRaycast : MonoBehaviour
 {
-    private int rayLength = 5;
-    private LayerMask layerMaskInteract;
-    private string excludeLayerName = null;
+    [SerializeField] private int rayLength = 5;
+    [SerializeField] private LayerMask layerMaskInteract;
+    [SerializeField] private string excludeLayerName = null;
 
     private myDoorController raycastedObj;
 
@@ -22,10 +22,10 @@ public class DoorRaycast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Raycast hit;
-        Vector3.fwd = transform.TransformDirection(Vector3.forward);
+        RaycastHit hit;
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
-        int mask = 1 << LayerMask.nameToLayer(excludeLayerName) | layerMaskInteract.value;
+        int mask = 1 << LayerMask.NameToLayer(excludeLayerName) | layerMaskInteract.value;
 
         if(Physics.Raycast(transform.position, fwd, out hit, rayLength, mask))
         {
@@ -67,5 +67,5 @@ public class DoorRaycast : MonoBehaviour
             crosshair.color = Color.white;
             isCrosshairActive = false;
         }
-    }
+    } 
 }
