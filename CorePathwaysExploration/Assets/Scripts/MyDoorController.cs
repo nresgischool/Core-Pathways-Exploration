@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class myDoorController : MonoBehaviour
+public class MyDoorController : MonoBehaviour
 {
     private Animator doorAnim;
     private bool doorOpen = false;
 
     void Awake()
     {
-        doorAnim = gameObject.getComponent<Animator>();
+        doorAnim = gameObject.GetComponent<Animator>();
     }
 
-    void PlayAnimation()
+    public void PlayAnimation()
     {
         if(!doorOpen)
         {

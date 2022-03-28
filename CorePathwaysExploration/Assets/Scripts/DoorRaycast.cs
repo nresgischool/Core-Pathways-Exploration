@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+using UnityEngine.InputSystem;
+#endif
+
+[RequireComponent(typeof(CharacterController))]
+#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+	[RequireComponent(typeof(PlayerInput))]
+#endif
 
 public class DoorRaycast : MonoBehaviour
 {
@@ -9,9 +17,9 @@ public class DoorRaycast : MonoBehaviour
     [SerializeField] private LayerMask layerMaskInteract;
     [SerializeField] private string excludeLayerName = null;
 
-    private myDoorController raycastedObj;
+    private MyDoorController raycastedObj;
 
-    private KeyCode openDoorKey = KeyCode.Mouse0;
+    public KeyCode openDoorKey = KeyCode.Mouse0;
 
     [SerializeField] private Image crosshair = null;
     private bool isCrosshairActive;
